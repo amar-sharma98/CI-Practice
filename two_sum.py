@@ -35,3 +35,15 @@ result = two_sum_sorted(sorted_numbers, target)
 if result:
     print(f"Indices of the two numbers that add up to {target}: {result}")
 
+#Sorted or Not sorted both
+def two_sum(nums, target):              # 1
+    seen = {}  # number -> index
+    print(seen)        # 2
+    for i, num in enumerate(nums):      # 3
+        complement = target - num
+        if complement in seen:
+            return (seen[complement], i)# 6
+        seen[num] = i
+        print(seen)                   # 7
+    return None
+print(two_sum([2, 7, 11, 15], 9))

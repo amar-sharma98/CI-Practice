@@ -35,3 +35,41 @@ def palindrome_opt(word):
     return "Palindrome"
 
 print(palindrome_opt("madam"))
+
+def isPalindrome(x):
+        """
+        :type x: int
+        :rtype: bool
+        """
+        if x < 0:
+            return False
+        num = abs(x)
+        reverse = 0
+        while num > 0:
+            digit = num % 10
+            reverse = reverse * 10 + digit
+            num = num // 10
+        return x == reverse
+print(isPalindrome(10))
+
+#Optimized
+def isPalindrome(x):
+    # Negative numbers or ending with 0 (except 0 itself)
+    if x < 0 or (x % 10 == 0 and x != 0):
+        return False
+
+    reversed_half = 0
+
+    # Build reversed second half
+    while x > reversed_half:
+        digit = x % 10
+        reversed_half = reversed_half * 10 + digit
+        x //= 10
+
+    # For even digits: x == reversed_half
+    # For odd digits: x == reversed_half // 10
+    return x == reversed_half or x == reversed_half // 10
+
+
+print(isPalindrome(121))   # True
+print(isPalindrome(10))    # False

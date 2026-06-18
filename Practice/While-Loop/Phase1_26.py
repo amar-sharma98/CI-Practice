@@ -9,3 +9,11 @@ while i <= min(num1, num2):
         hcf = i
     i += 1
 print(hcf)
+
+#Optimized
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+print(gcd(48, 18))  # 6

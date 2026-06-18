@@ -23,3 +23,35 @@ def duplicate_word(input_string):
     return list(duplicates)
 input_string = "Hello World Test hello world"
 print(duplicate_word(input_string))
+
+def process_words(words):
+    count = {}
+    result = []
+    first_duplicate_word = None
+
+    for word in words:
+        if word not in count:
+            count[word] = 1
+            result.append(word)
+        else:
+            count[word] += 1
+
+            # Identify first duplicate word
+            if first_duplicate_word is None:
+                first_duplicate_word = word
+                result.append(word)
+
+            # Allow ALL occurrences of that first duplicate word
+            elif word == first_duplicate_word:
+                result.append(word)
+
+            # Ignore duplicates of other words
+            else:
+                continue
+
+    return result
+
+
+# Test
+words = ["orange", "apple", "banana", "cherry", "apple", "banana", "date", "cherry", "apple"]
+print(process_words(words))
